@@ -45,7 +45,6 @@
             <view class="tag-item">100-1000</view>
             <view class="tag-item">1000-10000</view>
         </view>
-        <!-- <z-paging ref="paging" v-model="shopList" @query="queryList" :fixed="false" default-page-size='5' class="shop-content-list"> -->
         <view class="paging-box">
             <z-paging ref="paging" v-model="shopList" @query="queryList" :fixed="false" default-page-size='5'>
                 <view class="shop-content-list">
@@ -57,32 +56,7 @@
                 </view>
             </view>
             </z-paging>
-            <!-- <view class="content-card">
-                <image class="card-image" src="./image/20235221603(2).png"></image>
-                <view class="title">顶配 iPhone Xs 256…</view>
-                <view class="price">200租币 +9.9元</view>
-                <view class="num"><text>16.2元</text><text>已兑2513件</text></view>
-            </view>
-            <view class="content-card">
-                <image class="card-image" src="./image/20235221603(2).png"></image>
-                <view class="title">顶配 iPhone Xs 256…</view>
-                <view class="price">200租币 +9.9元</view>
-                <view class="num"><text>16.2元</text><text>已兑2513件</text></view>
-            </view>
-            <view class="content-card">
-                <image class="card-image" src="./image/20235221603(2).png"></image>
-                <view class="title">顶配 iPhone Xs 256…</view>
-                <view class="price">200租币 +9.9元</view>
-                <view class="num"><text>16.2元</text><text>已兑2513件</text></view>
-            </view>
-            <view class="content-card">
-                <image class="card-image" src="./image/20235221603(2).png"></image>
-                <view class="title">顶配 iPhone Xs 256…</view>
-                <view class="price">200租币 +9.9元</view>
-                <view class="num"><text>16.2元</text><text>已兑2513件</text></view>
-            </view> -->
         </view>
-    <!-- </z-paging> -->
         <view class="footer">
             <view class="footer-btn">
                 <view class="btn-tetx">赚取更多租币</view>

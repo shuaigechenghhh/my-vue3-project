@@ -20,7 +20,7 @@
             </view>
         </view>
         <view class="notice-list-box">
-            <z-paging ref="paging" v-model="noticeList" @query="queryList" :fixed="false" default-page-size='5'>
+            <z-paging ref="paging" v-model="noticeList" @query="queryList" :fixed="false" default-page-size='5' :auto="false">
                 <view class="notice-item" v-for="item, index in noticeList" :key="index" @click="handleDetail(true)">
                     <view class="item-title-box">
                         <view class="image-box">
@@ -41,7 +41,7 @@
     </view>
 </template>
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
+import { reactive, ref,onMounted,getCurrentInstance,nextTick  } from 'vue'
 import TaskNotice from '../movement/componment/tasknotice/index.vue'
 import DetailModel from './componments/detailModel/index.vue'
 type noticeList = {
@@ -59,141 +59,7 @@ const titleList = reactive([{
     title: '订单消息',
     hasNotice: false
 }])
-let noticeList = reactive([{
-    title: '活动通知',
-    time: '2020-03-23 14:30',
-    hasRead: false,
-    content: '恭喜获得20个租币，请查收',
-    coin: '20'
-},
-{
-    title: '活动通知',
-    time: '2020-03-23 14:30',
-    hasRead: true,
-    content: '恭喜获得20个租币，请查收',
-    coin: '20'
-},
-{
-    title: '活动通知',
-    time: '2020-03-23 14:30',
-    hasRead: false,
-    content: '恭喜获得20个租币，请查收',
-    coin: '20'
-},
-{
-    title: '活动通知',
-    time: '2020-03-23 14:30',
-    hasRead: true,
-    content: '恭喜获得20个租币，请查收',
-    coin: '20'
-},
-{
-    title: '活动通知',
-    time: '2020-03-23 14:30',
-    hasRead: false,
-    content: '恭喜获得20个租币，请查收',
-    coin: '20'
-},
-{
-    title: '活动通知',
-    time: '2020-03-23 14:30',
-    hasRead: true,
-    content: '恭喜获得20个租币，请查收',
-    coin: '20'
-},
-{
-    title: '活动通知',
-    time: '2020-03-23 14:30',
-    hasRead: false,
-    content: '恭喜获得20个租币，请查收',
-    coin: '20'
-},
-{
-    title: '活动通知',
-    time: '2020-03-23 14:30',
-    hasRead: true,
-    content: '恭喜获得20个租币，请查收',
-    coin: '20'
-},
-{
-    title: '活动通知',
-    time: '2020-03-23 14:30',
-    hasRead: false,
-    content: '恭喜获得20个租币，请查收',
-    coin: '20'
-},
-{
-    title: '活动通知',
-    time: '2020-03-23 14:30',
-    hasRead: true,
-    content: '恭喜获得20个租币，请查收',
-    coin: '20'
-},{
-    title: '活动通知',
-    time: '2020-03-23 14:30',
-    hasRead: false,
-    content: '恭喜获得20个租币，请查收',
-    coin: '20'
-},
-{
-    title: '活动通知',
-    time: '2020-03-23 14:30',
-    hasRead: true,
-    content: '恭喜获得20个租币，请查收',
-    coin: '20'
-},{
-    title: '活动通知',
-    time: '2020-03-23 14:30',
-    hasRead: false,
-    content: '恭喜获得20个租币，请查收',
-    coin: '20'
-},
-{
-    title: '活动通知',
-    time: '2020-03-23 14:30',
-    hasRead: true,
-    content: '恭喜获得20个租币，请查收',
-    coin: '20'
-},{
-    title: '活动通知',
-    time: '2020-03-23 14:30',
-    hasRead: false,
-    content: '恭喜获得20个租币，请查收',
-    coin: '20'
-},
-{
-    title: '活动通知',
-    time: '2020-03-23 14:30',
-    hasRead: true,
-    content: '恭喜获得20个租币，请查收',
-    coin: '20'
-},{
-    title: '活动通知',
-    time: '2020-03-23 14:30',
-    hasRead: false,
-    content: '恭喜获得20个租币，请查收',
-    coin: '20'
-},
-{
-    title: '活动通知',
-    time: '2020-03-23 14:30',
-    hasRead: true,
-    content: '恭喜获得20个租币，请查收',
-    coin: '20'
-},{
-    title: '活动通知',
-    time: '2020-03-23 14:30',
-    hasRead: false,
-    content: '恭喜获得20个租币，请查收',
-    coin: '20'
-},
-{
-    title: '活动通知',
-    time: '2020-03-23 14:30',
-    hasRead: true,
-    content: '恭喜获得20个租币，请查收',
-    coin: '20'
-},])
+let noticeList = reactive<noticeList | any>([])
 const currentTitle = ref(0)
 const hasNotice = ref(false)
 const isDetailShow=ref(false)
@@ -235,10 +101,11 @@ const handleShowModel = () => {
         }
     })
 }
-// onMounted(() => {
-//     queryList(1, 20)
-// })
+onMounted(() => {
+    queryList(1, 20)
+})
 const queryList = (pageNo: Number, pageSize: Number) => {
+    const instance=getCurrentInstance()
     const res = [{
         title: '活动通知',
         time: '2020-03-23 14:30',
@@ -246,6 +113,49 @@ const queryList = (pageNo: Number, pageSize: Number) => {
         content: '恭喜获得20个租币，请查收',
         coin: '20'
     },
+    {
+        title: '活动通知',
+        time: '2020-03-23 14:30',
+        hasRead: false,
+        content: '恭喜获得20个租币，请查收',
+        coin: '20'
+    },
+    {
+        title: '活动通知',
+        time: '2020-03-23 14:30',
+        hasRead: true,
+        content: '恭喜获得20个租币，请查收',
+        coin: '20'
+    },
+    {
+        title: '活动通知',
+        time: '2020-03-23 14:30',
+        hasRead: false,
+        content: '恭喜获得20个租币，请查收',
+        coin: '20'
+    },
+    {
+        title: '活动通知',
+        time: '2020-03-23 14:30',
+        hasRead: true,
+        content: '恭喜获得20个租币，请查收',
+        coin: '20'
+    },
+    {
+        title: '活动通知',
+        time: '2020-03-23 14:30',
+        hasRead: false,
+        content: '恭喜获得20个租币，请查收',
+        coin: '20'
+    },
+    {
+        title: '活动通知',
+        time: '2020-03-23 14:30',
+        hasRead: true,
+        content: '恭喜获得20个租币，请查收',
+        coin: '20'
+    },
+
     {
         title: '活动通知',
         time: '2020-03-23 14:30',
@@ -287,9 +197,12 @@ const queryList = (pageNo: Number, pageSize: Number) => {
         content: '恭喜获得20个租币，请查收',
         coin: '20'
     }]
-    console.log(22222)
-    setTimeout(() => {
-        paging.value && paging.value.completeByTotal(res, 20)
+    setTimeout( async() => {
+        noticeList=[...noticeList,...res]
+              paging.value && paging.value.completeByTotal(res, 20)
+        await nextTick()
+        instance?.proxy?.$forceUpdate()
+        
     }, 1000)
 }
 </script>
