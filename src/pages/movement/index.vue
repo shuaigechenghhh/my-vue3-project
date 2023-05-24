@@ -18,24 +18,9 @@
                     </view>
                 </view>
                 <view class="bubble-list">
-                    <view class="bubble-box fisrt">
-                        <text class="bubble-text">支付成功</text>
-                        <image src="./image/bz4bf6@2x(2).png" class="bubble-bg"></image>
-                    </view>
-                    <view class="bubble-box">
-                        <text class="bubble-text">运动步数</text>
-                        <image src="./image/bz4bf6@2x(2).png" class="bubble-bg"></image>
-                    </view>
-                    <view class="bubble-box center">
-                        <text class="bubble-text">支付成功</text>
-                        <image src="./image/bz4bf6@2x(2).png" class="bubble-bg"></image>
-                    </view>
-                    <view class="bubble-box">
-                        <text class="bubble-text">运动步数</text>
-                        <image src="./image/bz4bf6@2x(2).png" class="bubble-bg"></image>
-                    </view>
-                    <view class="bubble-box last">
-                        <text class="bubble-text">支付成功</text>
+                    <view :class="['bubble-box', `${item.position}`, item.received ? 'received' : '']"
+                        v-for="item, index in bubbleLsit" :key="index" @click="handleOnBubble(index)">
+                        <text class="bubble-text">{{ item.text }}</text>
                         <image src="./image/bz4bf6@2x(2).png" class="bubble-bg"></image>
                     </view>
                 </view>
@@ -119,9 +104,33 @@
 
 <script setup lang="ts">
 import TaskModel from './componment/taskModel/index.vue'
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 
 const isShow = ref(false)
+const bubbleLsit = reactive([{
+    text: '支付成功',
+    received: false,
+    position: 'fisrt'
+},
+{
+    text: '运动步数',
+    received: false,
+    position: ''
+},
+{
+    text: '支付成功',
+    received: false,
+    position: 'center'
+}, {
+    text: '运动步数',
+    received: false,
+    position: ''
+},
+{
+    text: '支付成功',
+    received: false,
+    position: 'last'
+}])
 const handleShow = (value: boolean) => {
     isShow.value = value
 }
@@ -135,16 +144,20 @@ const hangleShop = () => {
         url: '/pages/shop/index'
     })
 }
+const handleOnBubble = (indx: number) => {
+    bubbleLsit[indx].received = true
+}
 </script>
 
 <style scoped >
-.movement-center-content{
-  background: #FFFFFF;
-  position: absolute;
-  top: 770rpx;
-  width:100%;
-  border-radius: 48rpx 48rpx 0rpx 0rpx;
+.movement-center-content {
+    background: #FFFFFF;
+    position: absolute;
+    top: 770rpx;
+    width: 100%;
+    border-radius: 48rpx 48rpx 0rpx 0rpx;
 }
+
 .movement-main {
     position: relative;
     height: 100vh;
@@ -153,9 +166,9 @@ const hangleShop = () => {
 }
 
 .movement-headers {
-  position: fixed;
-  top: 70rpx;
-  width: 100%;
+    position: fixed;
+    top: 70rpx;
+    width: 100%;
 }
 
 .movement-box {
@@ -263,9 +276,9 @@ const hangleShop = () => {
     position: absolute;
     top: 390rpx;
     left: 50%;
-    transform: translate(-220rpx);
-    width: 440rpx;
-    height: 440rpx;
+    transform: translate(-165rpx);
+    width: 330rpx;
+    height: 330rpx;
     border-radius: 330rpx 330rpx 0 0;
     background: linear-gradient(360deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%);
 }
@@ -274,16 +287,16 @@ const hangleShop = () => {
     position: absolute;
     width: 65rpx;
     height: 124rpx;
-    bottom: 165rpx;
-    left: 20rpx;
+    bottom: 100rpx;
+    left: -10rpx;
 }
 
 .girl {
     position: absolute;
     width: 75rpx;
     height: 106rpx;
-    bottom: 165rpx;
-    right: 0rpx;
+    bottom: 100rpx;
+    right: -30rpx;
 }
 
 .bubble-text {
@@ -303,7 +316,7 @@ const hangleShop = () => {
 }
 
 .movement-num {
-    font-size: 110rpx;
+    font-size: 80rpx;
     font-family: DINCondensed-Bold, DINCondensed;
     font-weight: bold;
     color: #084F3E;
@@ -318,7 +331,9 @@ const hangleShop = () => {
 
 .bubble-btn {
     position: absolute;
-    bottom: 80rpx;
+    bottom: 0rpx;
+    margin-left: 50%;
+    transform: translate(-225rpx);
     width: 450rpx;
     height: 88rpx;
     background: linear-gradient(360deg, #FA5721 0%, #FFA901 100%);
@@ -334,20 +349,20 @@ const hangleShop = () => {
 }
 
 .movement-center {
-    width:100%;
-  background: #FFFFFF;
-  border-radius: 48rpx 48rpx 0rpx 0rpx;
+    width: 100%;
+    background: #FFFFFF;
+    border-radius: 48rpx 48rpx 0rpx 0rpx;
 }
 
 .line {
     width: 60rpx;
-  height: 10rpx;
-  background: #E2E2E2;
-  border-radius: 5rpx;
-  position: absolute;
-  left: 50%;
-  transform: translate(-30rpx);
-  top: 20rpx;
+    height: 10rpx;
+    background: #E2E2E2;
+    border-radius: 5rpx;
+    position: absolute;
+    left: 50%;
+    transform: translate(-30rpx);
+    top: 20rpx;
 }
 
 .center-title {
@@ -377,8 +392,8 @@ const hangleShop = () => {
 
 .movement-shop {
     width: 750rpx;
-  background: #FFFFFF;
-  border-radius: 48rpx 48rpx 0rpx 0rpx;
+    background: #FFFFFF;
+    border-radius: 48rpx 48rpx 0rpx 0rpx;
 }
 
 .shop-list {
@@ -487,4 +502,9 @@ const hangleShop = () => {
     margin-left: 10rpx;
     width: 16rpx;
     height: 26rpx;
-}</style>
+}
+
+.received {
+    visibility: hidden;
+}
+</style>
