@@ -71,6 +71,7 @@ const handleClose=()=>{
     hasNotice.value=false
 } 
 const handleNotice=(type:number,index:number,item:taskList)=>{
+
     updateList(type,index)
     currentCion.value=item.coin
     hasNotice.value=true

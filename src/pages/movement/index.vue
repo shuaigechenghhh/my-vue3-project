@@ -53,61 +53,63 @@
                 </view>
             </view>
         </view>
-        <view class="movement-center">
-            <view class="line"></view>
-            <view class="center-title">租币当钱花</view>
-            <view class="center-list">
-                <image class="list-item" src="./image/pic_shop@2x.png" @click="hangleShop"></image>
-                <image class="list-item margin-left" src="./image/pic_task@2x.png" @click="handleShow(true)"></image>
-                <image class="list-item margin-left" src="./image/pic_cash@2x.png"></image>
+        <view class="movement-center-content">
+            <view class="movement-center">
+                <view class="line"></view>
+                <view class="center-title">租币当钱花</view>
+                <view class="center-list">
+                    <image class="list-item" src="./image/pic_shop@2x.png" @click="hangleShop"></image>
+                    <image class="list-item margin-left" src="./image/pic_task@2x.png" @click="handleShow(true)"></image>
+                    <image class="list-item margin-left" src="./image/pic_cash@2x.png"></image>
+                </view>
             </view>
-        </view>
-        <view class="movement-shop">
-            <view class="center-title">租物推荐</view>
-            <view class="shop-list">
-                <view class="shop-card">
-                    <image class="card-item" src="./image/Bitmap@2x(1).png" mode="widthFix"></image>
-                    <view class="card-title">顶配 iPhone Xs 256…</view>
-                    <view class="card-tag">免押金</view>
-                    <view class="card-pirce">
-                        <view class="price">￥6.66/天</view>
-                        <view class="today">30天起租</view>
+            <view class="movement-shop">
+                <view class="center-title">租物推荐</view>
+                <view class="shop-list">
+                    <view class="shop-card">
+                        <image class="card-item" src="./image/Bitmap@2x(1).png" mode="widthFix"></image>
+                        <view class="card-title">顶配 iPhone Xs 256…</view>
+                        <view class="card-tag">免押金</view>
+                        <view class="card-pirce">
+                            <view class="price">￥6.66/天</view>
+                            <view class="today">30天起租</view>
+                        </view>
                     </view>
-                </view>
-                <view class="shop-card margin-left-xl">
-                    <image class="card-item" src="./image/Bitmap@2x(1).png" mode="widthFix"></image>
-                    <view class="card-title">顶配 iPhone Xs 256…</view>
-                    <view class="card-tag">免押金</view>
-                    <view class="card-pirce">
-                        <view class="price">￥6.66/天</view>
-                        <view class="today">30天起租</view>
+                    <view class="shop-card margin-left-xl">
+                        <image class="card-item" src="./image/Bitmap@2x(1).png" mode="widthFix"></image>
+                        <view class="card-title">顶配 iPhone Xs 256…</view>
+                        <view class="card-tag">免押金</view>
+                        <view class="card-pirce">
+                            <view class="price">￥6.66/天</view>
+                            <view class="today">30天起租</view>
+                        </view>
                     </view>
-                </view>
-                <view class="shop-card margin-top">
-                    <image class="card-item" src="./image/Bitmap@2x(1).png" mode="widthFix"></image>
-                    <view class="card-title">顶配 iPhone Xs 256…</view>
-                    <view class="card-tag">免押金</view>
-                    <view class="card-pirce">
-                        <view class="price">￥6.66/天</view>
-                        <view class="today">30天起租</view>
+                    <view class="shop-card margin-top">
+                        <image class="card-item" src="./image/Bitmap@2x(1).png" mode="widthFix"></image>
+                        <view class="card-title">顶配 iPhone Xs 256…</view>
+                        <view class="card-tag">免押金</view>
+                        <view class="card-pirce">
+                            <view class="price">￥6.66/天</view>
+                            <view class="today">30天起租</view>
+                        </view>
                     </view>
-                </view>
 
-                <view class="shop-card margin-top margin-left-xl">
-                    <image class="card-item" src="./image/Bitmap@2x(1).png" mode="widthFix"></image>
-                    <view class="card-title">顶配 iPhone Xs 256…</view>
-                    <view class="card-tag">免押金</view>
-                    <view class="card-pirce">
-                        <view class="price">￥6.66/天</view>
-                        <view class="today">30天起租</view>
+                    <view class="shop-card margin-top margin-left-xl">
+                        <image class="card-item" src="./image/Bitmap@2x(1).png" mode="widthFix"></image>
+                        <view class="card-title">顶配 iPhone Xs 256…</view>
+                        <view class="card-tag">免押金</view>
+                        <view class="card-pirce">
+                            <view class="price">￥6.66/天</view>
+                            <view class="today">30天起租</view>
+                        </view>
                     </view>
-                </view>
 
-            </view>
-            <view class="more-block">
-                <view class="more-btn">
-                    <text>查看更多</text>
-                    <image src="./image/DisclosureIndicator@2x.png" class="icon"></image>
+                </view>
+                <view class="more-block">
+                    <view class="more-btn">
+                        <text>查看更多</text>
+                        <image src="./image/DisclosureIndicator@2x.png" class="icon"></image>
+                    </view>
                 </view>
             </view>
         </view>
@@ -120,30 +122,40 @@ import TaskModel from './componment/taskModel/index.vue'
 import { ref } from 'vue'
 
 const isShow = ref(false)
-const handleShow=(value:boolean)=>{
-    isShow.value=value
+const handleShow = (value: boolean) => {
+    isShow.value = value
 }
-const hangleToNotice=()=>{
+const hangleToNotice = () => {
     uni.navigateTo({
-        url:'/pages/noticeList/index'
+        url: '/pages/noticeList/index'
     })
 }
-const hangleShop=()=>{
+const hangleShop = () => {
     uni.navigateTo({
-        url:'/pages/shop/index'
-    }) 
+        url: '/pages/shop/index'
+    })
 }
 </script>
 
 <style scoped >
+.movement-center-content{
+  background: #FFFFFF;
+  position: absolute;
+  top: 770rpx;
+  width:100%;
+  border-radius: 48rpx 48rpx 0rpx 0rpx;
+}
 .movement-main {
     position: relative;
     height: 100vh;
+    width: 100vw;
     overflow: auto;
 }
 
 .movement-headers {
-    position: relative;
+  position: fixed;
+  top: 70rpx;
+  width: 100%;
 }
 
 .movement-box {
@@ -322,23 +334,20 @@ const hangleShop=()=>{
 }
 
 .movement-center {
-    position: absolute;
-    top: 780rpx;
-    width: 750rpx;
-    /* height: 396rpx; */
-    background: #FFFFFF;
-    border-radius: 48rpx 48rpx 0rpx 0rpx;
+    width:100%;
+  background: #FFFFFF;
+  border-radius: 48rpx 48rpx 0rpx 0rpx;
 }
 
 .line {
     width: 60rpx;
-    height: 10rpx;
-    background: #E2E2E2;
-    border-radius: 5rpx;
-    position: absolute;
-    left: 50%;
-    transform: translate(-30rpx);
-    margin-top: 20rpx;
+  height: 10rpx;
+  background: #E2E2E2;
+  border-radius: 5rpx;
+  position: absolute;
+  left: 50%;
+  transform: translate(-30rpx);
+  top: 20rpx;
 }
 
 .center-title {
@@ -367,11 +376,9 @@ const hangleShop=()=>{
 }
 
 .movement-shop {
-    position: absolute;
-    top: 1200rpx;
     width: 750rpx;
-    background: #FFFFFF;
-    border-radius: 48rpx 48rpx 0rpx 0rpx;
+  background: #FFFFFF;
+  border-radius: 48rpx 48rpx 0rpx 0rpx;
 }
 
 .shop-list {
@@ -382,14 +389,16 @@ const hangleShop=()=>{
 }
 
 .shop-card {
-    width: 340rpx;
-    height: 424rpx;
     background-color: #FFFFFF;
     border-radius: 12rpx;
+    box-sizing: border-box;
+    padding-bottom: 20rpx;
 }
 
 .card-item {
-    width: 100%;
+    /* width: 100%; */
+    width: 340rpx;
+    /* height: 424rpx; */
 
 }
 
@@ -416,59 +425,66 @@ const hangleShop=()=>{
     line-height: 30rpx;
     margin-left: 18rpx;
 }
-.card-pirce{
+
+.card-pirce {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 6rpx;
 }
-.price{
+
+.price {
     font-size: 24rpx;
-font-family: PingFangSC-Regular, PingFang SC;
-font-weight: 400;
-color: #F04F4F;
-margin-left: 18rpx;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #F04F4F;
+    margin-left: 18rpx;
 }
-.today{
+
+.today {
     font-size: 24rpx;
-font-family: PingFangSC-Regular, PingFang SC;
-font-weight: 400;
-color: #AAAAAA;
-margin-right: 18rpx;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #AAAAAA;
+    margin-right: 18rpx;
 }
-.margin-top{
+
+.margin-top {
     margin-top: 25rpx;
 }
-.margin-left-xl{
+
+.margin-left-xl {
     margin-left: 20rpx;
 }
-.more-block{
+
+.more-block {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 10rpx;
+    margin-top: 50rpx;
     margin-bottom: 100rpx;
 }
-.more-btn{
+
+.more-btn {
     width: 268rpx;
-height: 61rpx;
-border-radius: 31rpx;
-border: 1rpx solid #999999;
-display: flex;
-justify-content: center;
-align-items: center;
-width: 268rpx;
-height: 61rpx;
-border-radius: 31rpx;
-border: 1rpx solid #999999;
-font-size: 30rpx;
-font-family: PingFangSC-Regular, PingFang SC;
-font-weight: 400;
-color: #999999;
+    height: 61rpx;
+    border-radius: 31rpx;
+    border: 1rpx solid #999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 268rpx;
+    height: 61rpx;
+    border-radius: 31rpx;
+    border: 1rpx solid #999999;
+    font-size: 30rpx;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #999999;
 }
-.icon{
+
+.icon {
     margin-left: 10rpx;
     width: 16rpx;
     height: 26rpx;
-}
-</style>
+}</style>
